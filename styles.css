@@ -1,0 +1,675 @@
+/* Variaveis principais: altere aqui cores, sombra e raio geral do site. */
+:root {
+  --bg: #fbfdfb;
+  --surface: #ffffff;
+  --muted: #eef7f2;
+  --soft: #e4f3ec;
+  --text: #243138;
+  --subtle: #66747b;
+  --line: #dce9e2;
+  --primary: #2e9d69;
+  --primary-dark: #1f7650;
+  --accent: #d99054;
+  --shadow: 0 24px 70px rgba(38, 73, 59, 0.12);
+  --radius: 8px;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+/* Reset basico para deixar medidas e elementos mais previsiveis. */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  color: var(--text);
+  background: var(--bg);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Container central usado em quase todas as secoes. */
+.container {
+  width: min(1120px, calc(100% - 40px));
+  margin: 0 auto;
+}
+
+/* Header e menu principal. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 72px;
+  padding: 0 max(20px, calc((100vw - 1120px) / 2));
+  background: rgba(251, 253, 251, 0.86);
+  border-bottom: 1px solid var(--line);
+  backdrop-filter: blur(16px);
+}
+
+.brand,
+.main-menu,
+.hero-actions,
+.trust-row,
+.socials {
+  display: flex;
+  align-items: center;
+}
+
+.brand {
+  gap: 10px;
+  font-weight: 800;
+}
+
+.brand-mark {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  color: #fff;
+  background: var(--primary);
+  border-radius: 50%;
+  font-size: 0.85rem;
+}
+
+.main-menu {
+  gap: 28px;
+  color: var(--subtle);
+  font-size: 0.95rem;
+}
+
+.main-menu a:hover {
+  color: var(--primary-dark);
+}
+
+/* Botao hamburguer aparece apenas no mobile. */
+.menu-toggle {
+  display: none;
+  width: 42px;
+  height: 42px;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.menu-toggle span {
+  display: block;
+  width: 18px;
+  height: 2px;
+  margin: 4px auto;
+  background: var(--text);
+}
+
+/* Botoes padrao do site, incluindo WhatsApp e CTAs. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 48px;
+  padding: 0 22px;
+  color: #fff;
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: 999px;
+  font-weight: 800;
+  box-shadow: 0 14px 30px rgba(46, 157, 105, 0.2);
+  transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.button:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+}
+
+.button-small {
+  min-height: 40px;
+  padding: 0 18px;
+  font-size: 0.9rem;
+}
+
+.button-secondary {
+  color: var(--text);
+  background: var(--surface);
+  border-color: var(--line);
+  box-shadow: none;
+}
+
+.button-secondary:hover {
+  color: #fff;
+}
+
+/* Hero: primeira secao da landing page. */
+.hero {
+  padding: 86px 0 72px;
+  background:
+    radial-gradient(circle at 85% 18%, rgba(217, 144, 84, 0.16), transparent 28%),
+    linear-gradient(145deg, #f7fcf8 0%, #e9f7ef 100%);
+}
+
+/* Grades reutilizadas em secoes com duas colunas. */
+.hero-grid,
+.split,
+.benefits-grid,
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+/* Tipografia geral: titulos, subtitulos e textos de apoio. */
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+h1,
+h2,
+h3,
+p {
+  margin-top: 0;
+}
+
+h1 {
+  max-width: 660px;
+  margin-bottom: 22px;
+  font-size: clamp(2.55rem, 6vw, 4.75rem);
+  line-height: 1;
+}
+
+h2 {
+  margin-bottom: 18px;
+  font-size: clamp(2rem, 4vw, 3.15rem);
+  line-height: 1.08;
+}
+
+h3 {
+  margin-bottom: 10px;
+  font-size: 1.15rem;
+  line-height: 1.25;
+}
+
+.hero-text,
+.section-heading p,
+.split p,
+.cta-panel p {
+  color: var(--subtle);
+  font-size: 1.08rem;
+}
+
+.hero-actions {
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 30px 0 28px;
+}
+
+.trust-row {
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.trust-row span {
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.72);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  color: var(--subtle);
+  font-size: 0.9rem;
+}
+
+.trust-row strong {
+  color: var(--text);
+}
+
+/* Area da imagem principal e card flutuante no hero. */
+.hero-media,
+.portrait {
+  position: relative;
+}
+
+.hero-media img,
+.portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.floating-card {
+  position: absolute;
+  right: 24px;
+  bottom: 24px;
+  width: min(280px, calc(100% - 48px));
+  padding: 18px;
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+}
+
+.floating-card strong,
+.floating-card span {
+  display: block;
+}
+
+.floating-card span {
+  margin-top: 4px;
+  color: var(--subtle);
+  font-size: 0.92rem;
+}
+
+/* Secoes padrao: espacamento vertical e fundos alternados. */
+.section {
+  padding: 92px 0;
+}
+
+.muted {
+  background: var(--muted);
+}
+
+.section-heading {
+  max-width: 680px;
+  margin: 0 auto 42px;
+  text-align: center;
+}
+
+/* Grades de cards e listas. */
+.info-grid,
+.service-grid,
+.testimonial-grid,
+.benefits-list {
+  display: grid;
+  gap: 18px;
+}
+
+.info-grid {
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 34px;
+}
+
+.info-grid div,
+.card,
+.quote-card,
+.benefits-list article,
+details {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.info-grid div {
+  padding: 18px;
+}
+
+.info-grid span {
+  color: var(--primary-dark);
+  font-size: 0.78rem;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.info-grid strong {
+  display: block;
+  margin: 8px 0 4px;
+}
+
+.info-grid p,
+.card p,
+.benefits-list p,
+.quote-card figcaption,
+details p,
+.site-footer p,
+.site-footer li {
+  color: var(--subtle);
+}
+
+/* Cards da secao de servicos. */
+.service-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.card {
+  min-height: 170px;
+  padding: 24px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow);
+}
+
+/* Secao de beneficios. */
+.benefits-grid {
+  grid-template-columns: 0.8fr 1.2fr;
+}
+
+.benefits-list {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.benefits-list article {
+  padding: 24px;
+}
+
+/* Estilos dos depoimentos ficam guardados para quando a secao for reativada. */
+.testimonials {
+  background: var(--soft);
+}
+
+.testimonial-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.quote-card {
+  margin: 0;
+  padding: 28px;
+}
+
+.quote-card blockquote {
+  margin: 0 0 20px;
+  font-size: 1.05rem;
+}
+
+.quote-card figcaption {
+  font-weight: 800;
+}
+
+/* FAQ com perguntas em accordion nativo do HTML. */
+.faq-wrap {
+  max-width: 820px;
+}
+
+.faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+details {
+  padding: 0 22px;
+}
+
+summary {
+  cursor: pointer;
+  padding: 22px 0;
+  font-weight: 900;
+  list-style: none;
+}
+
+summary::-webkit-details-marker {
+  display: none;
+}
+
+details p {
+  margin-bottom: 22px;
+}
+
+/* Chamada final para WhatsApp. */
+.cta-section {
+  padding: 80px 0 96px;
+}
+
+.cta-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  min-height: 310px;
+  padding: 48px;
+  color: #fff;
+  background:
+    linear-gradient(90deg, rgba(27, 98, 67, 0.92), rgba(27, 98, 67, 0.78)),
+    url("https://images.unsplash.com/photo-1601758124510-52d02ddb7cbd?auto=format&fit=crop&w=1400&q=85") center/cover;
+  border-radius: var(--radius);
+}
+
+.cta-panel .eyebrow,
+.cta-panel p {
+  color: rgba(255, 255, 255, 0.82);
+}
+
+.cta-panel h2 {
+  max-width: 650px;
+}
+
+/* Rodape e links sociais. */
+.site-footer {
+  padding: 48px 0 24px;
+  background: #f0f7f3;
+  border-top: 1px solid var(--line);
+}
+
+.footer-grid {
+  grid-template-columns: 1.2fr 1fr 1fr;
+  align-items: start;
+  gap: 32px;
+}
+
+.site-footer h3 {
+  font-size: 1rem;
+}
+
+.site-footer ul {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.socials {
+  gap: 10px;
+}
+
+.socials a,
+.whatsapp-float {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: var(--primary-dark);
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  font-size: 0.8rem;
+  font-weight: 900;
+}
+
+.socials svg {
+  width: 20px;
+  height: 20px;
+  fill: none;
+  stroke: currentColor;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-width: 1.8;
+}
+
+.copyright {
+  width: min(1120px, calc(100% - 40px));
+  margin: 34px auto 0;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  font-size: 0.9rem;
+}
+
+/* Botao flutuante de WhatsApp. */
+.whatsapp-float {
+  position: fixed;
+  right: 22px;
+  bottom: 22px;
+  z-index: 15;
+  width: 56px;
+  height: 56px;
+  color: #fff;
+  background: var(--primary);
+  box-shadow: 0 12px 30px rgba(31, 118, 80, 0.28);
+}
+
+/* Responsivo para tablet e celular. */
+@media (max-width: 900px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .main-menu {
+    position: absolute;
+    top: 72px;
+    left: 20px;
+    right: 20px;
+    display: none;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 8px;
+    padding: 18px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+
+  .main-menu.is-open {
+    display: flex;
+  }
+
+  .hero-grid,
+  .split,
+  .benefits-grid,
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero {
+    padding: 58px 0 64px;
+  }
+
+  .service-grid,
+  .testimonial-grid,
+  .benefits-list {
+    grid-template-columns: 1fr;
+  }
+
+  .card {
+    min-height: auto;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .cta-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 32px 24px;
+  }
+}
+
+/* Ajustes extras para telas pequenas. */
+@media (max-width: 560px) {
+  .container {
+    width: min(100% - 28px, 1120px);
+  }
+
+  .site-header {
+    min-height: 64px;
+    padding: 0 14px;
+  }
+
+  .brand {
+    font-size: 0.95rem;
+  }
+
+  .brand-mark {
+    width: 34px;
+    height: 34px;
+  }
+
+  .main-menu {
+    top: 64px;
+    left: 14px;
+    right: 14px;
+  }
+
+  .hero {
+    padding: 44px 0 56px;
+  }
+
+  h1 {
+    font-size: clamp(2.15rem, 12vw, 3rem);
+    line-height: 1.04;
+  }
+
+  h2 {
+    font-size: clamp(1.75rem, 9vw, 2.35rem);
+  }
+
+  .hero-text,
+  .section-heading p,
+  .split p,
+  .cta-panel p {
+    font-size: 1rem;
+  }
+
+  .hero-actions .button {
+    width: 100%;
+  }
+
+  .hero-media img,
+  .portrait img {
+    aspect-ratio: 4 / 4.6;
+  }
+
+  .floating-card {
+    position: static;
+    width: 100%;
+    margin-top: 14px;
+  }
+
+  .section {
+    padding: 60px 0;
+  }
+
+  .section-heading {
+    margin-bottom: 30px;
+    text-align: left;
+  }
+
+  .card,
+  .benefits-list article {
+    padding: 20px;
+  }
+
+  .cta-section {
+    padding: 60px 0 76px;
+  }
+
+  .cta-panel {
+    min-height: auto;
+  }
+
+  .whatsapp-float {
+    right: 14px;
+    bottom: 14px;
+    width: 52px;
+    height: 52px;
+  }
+}
